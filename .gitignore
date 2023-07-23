@@ -21,3 +21,4 @@ dist/
 
 # Other random things
 *.tar.gz
+*.crt

@@ -1,4 +1,8 @@
-# Unseen Object Instance Segmentation for Robotic Environments
+# Unofficial Fork: Unseen Object Instance Segmentation for Robotic Environments
+
+This is an unofficial fork of UOIS. It upgrades the UOIS stack to python 3.8 and pytorch 1.13.1. It supports docker containers to run and develop on UOIS.
+
+# Source ReadMe
 
 <img src="gifs/pipeline.gif" height="200" />
 
