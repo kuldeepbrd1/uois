@@ -142,7 +142,7 @@ class Upsample_Concat_Conv2d_GN_ReLU(nn.Module):
     def __init__(self, in_channels, out_channels, num_groups, ksize=3, stride=1):
         super(Upsample_Concat_Conv2d_GN_ReLU, self).__init__()
         self.channel_reduction_layer = Conv2d_GN_ReLU(in_channels, in_channels//2, num_groups)
-        self.upsample = nn.Upsample(scale_factor=2, mode='bilinear')
+        self.upsample = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
         self.conv_gn_relu = Conv2d_GN_ReLU(in_channels, out_channels, num_groups)
 
     def forward(self, x1, x2):

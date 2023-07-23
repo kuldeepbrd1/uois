@@ -3,14 +3,14 @@ channels:
   - pytorch
   - defaults
 dependencies:
-  - python=3.8
-  - numpy
+  - python=3.7
+  - cudatoolkit=10.1
+  - pytorch=1.5.1
+  - torchvision
   - jupyter
   - pip
+  - pillow
   - pip:
-    - pillow
-    - torch==1.13.1 -e https://download.pytorch.org/whl/cu117
-    - torchvision==0.14.1 -e https://download.pytorch.org/whl/cu117
     - pypng
     - matplotlib
     - numpy

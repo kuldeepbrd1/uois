@@ -367,9 +367,9 @@ class UOISNet3D(object):
 
             # Resize
             new_size = (224,224)
-            rgb_crop = F.upsample_bilinear(rgb_crop.unsqueeze(0), new_size)[0] # Shape: [3 x new_H x new_W]
+            rgb_crop = F.interpolate(rgb_crop.unsqueeze(0), new_size, mode="bilinear")[0] # Shape: [3 x new_H x new_W]
             rgb_crops[index] = rgb_crop
-            mask_crop = F.upsample_nearest(mask_crop.unsqueeze(0).unsqueeze(0), new_size)[0,0] # Shape: [new_H, new_W]
+            mask_crop = F.interpolate(mask_crop.unsqueeze(0).unsqueeze(0), new_size, mode="nearest")[0,0] # Shape: [new_H, new_W]
             mask_crops[index] = mask_crop
 
         batch = {'rgb' : rgb_crops, 'initial_masks' : mask_crops}
@@ -397,7 +397,7 @@ class UOISNet3D(object):
             orig_H = y_max - y_min + 1
             orig_W = x_max - x_min + 1
             mask = refined_crops[index].unsqueeze(0).unsqueeze(0).float()
-            resized_mask = F.upsample_nearest(mask, (orig_H, orig_W))[0,0]
+            resized_mask = F.interpolate(mask, (orig_H, orig_W), mode="nearest")[0,0]
 
             # Calculate average depth
             h_idx, w_idx = torch.nonzero(resized_mask).t()
@@ -414,7 +414,7 @@ class UOISNet3D(object):
             orig_H = y_max - y_min + 1
             orig_W = x_max - x_min + 1
             mask = refined_crops[index].unsqueeze(0).unsqueeze(0).float()
-            resized_mask = F.upsample_nearest(mask, (orig_H, orig_W))[0,0]
+            resized_mask = F.interpolate(mask, (orig_H, orig_W), mode="nearest")[0,0]
 
             # Set refined mask
             h_idx, w_idx = torch.nonzero(resized_mask).t()
