@@ -3,11 +3,10 @@ pillow
 torch==1.13.1 -e https://download.pytorch.org/whl/cu117
 torchvision==0.14.1 -e https://download.pytorch.org/whl/cu117
 pypng
-matplotlib
-numpy
+matplotlib==3.7.2
+numpy==1.24.4
 opencv-python
 scikit-image
-numpy
 black
 ipykernel
 jupyter
